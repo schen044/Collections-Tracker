@@ -4,12 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const session = require('express-session');
+const passport = require('passport');
 
 // require env
 require('dotenv').config();
 
 // Connect to MongoDB database
 require('./config/database');
+require('./config/passport');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -30,6 +32,9 @@ app.use(session({
   resave: false,
   saveUninitialized: true
 }))
+// mount passport
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
