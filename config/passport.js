@@ -34,8 +34,11 @@ passport.serializeUser(function(user, cb) {
     cb(null, user._id);
 });
 
-passport.deserializeUser(function(userId, cb) {
-    User.findById(userId).then(function(user) {
+passport.deserializeUser(async function(userId, cb) {
+    try {
+        const user = await User.findById(userId);
         cb(null, user);
-    });
+    } catch(err) {
+        cb(err);
+    }
 });
