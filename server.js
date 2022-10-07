@@ -3,6 +3,13 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const session = require('express-session');
+
+// require env
+require('dotenv').config();
+
+// Connect to MongoDB database
+require('./config/database');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,6 +24,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+// mount session
+app.use(session({
+  secret: process.env.SECRET,
+  resave: false,
+  saveUninitialized: true
+}))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
