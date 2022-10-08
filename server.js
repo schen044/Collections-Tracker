@@ -37,6 +37,12 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// middleware to pass req.user to all views
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+})
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
