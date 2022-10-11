@@ -1,0 +1,27 @@
+<%- include('../partials/header') %>
+
+  <body>
+    <h2>Add Item</h2>
+    <form id="new-form" action="/collections" method="POST">
+        <label>Item Name:</label>
+            <input type="text" name="itemName">
+        <label>Product ID:</label>
+            <input type="text" name="productId">
+        <label>Date Produced:
+            <input type="datetime-local" name="departs" value="2022-09-12T19:50" min="2022-09-12T19:50">
+        <br><br>
+        <label>Date Ordered:</label>
+            <input type="datetime-local" name="departs" value="2022-09-12T19:50" min="2022-09-12T19:50">
+        <br><br>
+        <label>Status:</label>
+            <select name="itemStatus">
+                <option value="wishlisted">Wishlisted</option>
+                <option value="ordered">Ordered</option>
+                <option value="shipped">Shipped</option>
+                <option value="received">Received</option>
+            </select>
+        <br><br>
+        <input type="submit" value="Add Item">
+      </form>
+
+<%- include('../partials/footer') %>
