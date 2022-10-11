@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
   itemName: String,
   productId: String,
-  Vendor: [String],
+  vendor: String,
   dateProduced: Date,
   dateOrdered: Date, 
   status: {
