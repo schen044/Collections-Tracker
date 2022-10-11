@@ -1,4 +1,5 @@
 const Item = require('../models/item');
+const Collection = require('../models/collection')
 
 module.exports = {
   new: newItem,

@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const collectionSchema = new Schema({
   name: String,
   type: String,
+  item: {type: Schema.Types.ObjectId, ref: 'Item'}
 }, {
   timestamps: true
 });
