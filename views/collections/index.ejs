@@ -1,6 +1,23 @@
 <%- include('../partials/header') %>
 
-  <body>
-    <a href="/items/new">Add Item to Collection</a>
+<table>
+  <thead>
+    <tr>
+      <th>Collection Name</th>
+      <th>Collection Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% collections.forEach(c => { %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.type %></td>
+        <td><a href="/collections/<%= c._id %>">Details</a></td>
+      </tr>
+    <% }) %>
+  </tbody>
+</table>
+<a href="/collections/new">Add New Collection</a>
+<a href="/items/new">Add Item to Collection</a>
 
 <%- include('../partials/footer') %>

@@ -8,5 +8,6 @@ const isLoggedIn = require('../config/auth');
 router.get('/new', itemsCtrl.new);
 // create new post - POST /items create
 router.post('/', itemsCtrl.create);
+// 
 
 module.exports = router;
