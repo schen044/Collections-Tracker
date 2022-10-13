@@ -11,6 +11,7 @@ router.get('/', collectionsCtrl.index);
 router.get('/new', collectionsCtrl.new);
 // create new post - POST /collections create
 router.post('/', collectionsCtrl.create);
-
+// read a specific post - GET /collections/:id show
+router.get('/:id', collectionsCtrl.show);
 
 module.exports = router;
