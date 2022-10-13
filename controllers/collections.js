@@ -5,7 +5,8 @@ module.exports = {
   index,
   new: newCollection,
   create,
-  show
+  show,
+  delete: deleteCollection
 };
 
 function index(req, res) {
@@ -39,5 +40,12 @@ function show(req, res) {
     Item.find({}, function(err, dbitems) {
       res.render('collections/show', { title: `${collection.name}`, dbitems, collection});
     })
+  });
+}
+
+function deleteCollection(req, res) {
+  Collection.findOneAndDelete({_id: req.params.id, user: req.user._id}, function(err) {
+    // go back to index after deleting
+    res.redirect('/collections');
   });
 }

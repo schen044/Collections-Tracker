@@ -15,6 +15,11 @@
         <td><%= c.name %></td>
         <td><%= c.type %></td>
         <td><a href="/collections/<%= c._id %>">Details</a></td>
+        <td>
+          <form action="/collections/<%= c._id %>?_method=DELETE" method="POST">
+            <button type="submit">DELETE</button>
+          </form>
+        </td>
       </tr>
     <% }) %>
   </tbody>
