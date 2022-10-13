@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+
+  <body>
+    <h2>Edit Item</h2>
+    <form id="edit-form" action="/items/<%= item._id %>?_method=PUT" method="POST" autocomplete="off">
+        <label>Item Name:</label>
+            <input type="text" name="itemName" value="<%= item.itemName %>">
+        <br><br>
+        <label>Product ID:</label>
+            <input type="text" name="productId" value="<%= item.productId %>">
+        <br><br>
+        <label>Vendor:</label>
+            <input type="'text" name="vendor" value="<%= item.vendor %>">
+        <br><br>
+        <label>Date Produced:
+            <input type="datetime-local" name="dateProduced" value="2022-10-11T12:00">
+        <br><br>
+        <label>Date Ordered:</label>
+            <input type="datetime-local" name="dateOrdered" value="2022-10-11T12:00">
+        <br><br>
+        <label>Status:</label>
+            <select name="itemStatus">
+                <option value="Wishlisted">Wishlisted</option>
+                <option value="Ordered">Ordered</option>
+                <option value="Shipped">Shipped</option>
+                <option value="Received">Received</option>
+            </select>
+        <br><br>
+        <input type="submit" value="Save Changes">
+      </form>
+
+<%- include('../partials/footer') %>

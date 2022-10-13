@@ -14,7 +14,11 @@ router.get('/', itemsCtrl.index);
 router.post('/:id/collections', itemsCtrl.addToCollection)
 // read a specific post - GET /items/:id show
 router.get('/:id', itemsCtrl.show);
-// delete a specific post - DELTE /collections/:id delete
+// delete a specific post - DELETE /items/:id delete
 router.delete('/:id', itemsCtrl.delete);
+// return view form to edit a post - GET /items/:id/edit edit
+router.get('/:id/edit', itemsCtrl.edit);
+// update specified post - PUT /items/:id update
+router.put('/:id', itemsCtrl.update)
 
 module.exports = router;

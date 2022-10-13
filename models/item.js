@@ -9,9 +9,9 @@ const itemSchema = new Schema({
   vendor: String,
   dateProduced: Date,
   dateOrdered: Date, 
-  status: {
+  itemStatus: {
     type: String,
-    enum: ['Wishlisted', 'Ordered', 'Shipped', 'Recieved']
+    enum: ['Wishlisted', 'Ordered', 'Shipped', 'Received']
 }}, {
   timestamps: true
 });

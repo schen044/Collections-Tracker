@@ -7,7 +7,9 @@ module.exports = {
   index,
   show,
   addToCollection,
-  delete: deleteItem
+  delete: deleteItem,
+  edit,
+  update
 };
 
 function newItem(req, res) {
@@ -57,4 +59,19 @@ function deleteItem(req, res) {
       res.redirect('/items');
     });
   })
+}
+
+function edit(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+      res.render('items/edit', { title: 'Edit Item', item});
+  });
+}
+
+function update(req, res) {
+  Item.findOneAndUpdate({_id: req.params.id, user: req.user._id},
+    req.body,
+    {new: true},
+    function(err) {
+    res.redirect('/items');
+  });
 }
