@@ -9,8 +9,12 @@
   <tbody>
     <% items.forEach(i => { %>
       <tr>
-        <td><%= i.itemName %></td>
-        <td><a href="/items/<%= i._id %>">Details</a></td>
+        <td><a href="/items/<%= i._id %>"><%= i.itemName %></a></td>
+        <td>
+            <form action="/items/<%= i._id %>?_method=DELETE" method="POST">
+                <button type="submit">DELETE</button>
+            </form>
+        </td>
       </tr>
     <% }) %>
   </tbody>

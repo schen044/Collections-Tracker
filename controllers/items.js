@@ -6,7 +6,8 @@ module.exports = {
   create,
   index,
   show,
-  addToCollection
+  addToCollection,
+  delete: deleteItem
 };
 
 function newItem(req, res) {
@@ -17,10 +18,10 @@ function create(req, res) {
   Item.create(req.body, function(err, item) {
     if(err) {
       console.log(err)
-      res.redirect('./collections')
+      res.redirect('/items')
     }
     console.log(item);
-    res.redirect('./collections')
+    res.redirect('/items')
   })
 }
 
@@ -46,5 +47,14 @@ function addToCollection(req, res) {
         res.redirect(`/items/${reqItem._id}`)
       })
     })
+  })
+}
+
+function deleteItem(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+    Item.findOneAndDelete({_id: req.params.id, user: req.user._id}, function(err) {
+      // go back to index after deleting
+      res.redirect('/items');
+    });
   })
 }

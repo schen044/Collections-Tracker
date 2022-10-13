@@ -10,9 +10,11 @@ router.get('/new', itemsCtrl.new);
 router.post('/', itemsCtrl.create);
 // read all posts - GET /items index
 router.get('/', itemsCtrl.index);
-// read a specific post - GET /items/:id show
-router.get('/:id', itemsCtrl.show);
 // create a comment for a post - POST /items/:id/collections
 router.post('/:id/collections', itemsCtrl.addToCollection)
+// read a specific post - GET /items/:id show
+router.get('/:id', itemsCtrl.show);
+// delete a specific post - DELTE /collections/:id delete
+router.delete('/:id', itemsCtrl.delete);
 
 module.exports = router;
