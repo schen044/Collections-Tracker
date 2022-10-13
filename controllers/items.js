@@ -39,11 +39,11 @@ function show(req, res) {
 }
 
 function addToCollection(req, res) {
-  Item.findById(req.params.id, function(err, item) {
+  Item.findById(req.params.id, function(err, reqItem) {
     Collection.findById(req.body.collectionId, function(err, collections) {
-      collections.itemName.push(item)
+      collections.item.push(reqItem)
       collections.save(function(err) {
-        res.redirect(`/items/${item._id}`)
+        res.redirect(`/items/${reqItem._id}`)
       })
     })
   })
