@@ -13,7 +13,8 @@ router.get('/new', collectionsCtrl.new);
 router.post('/', collectionsCtrl.create);
 // read a specific post - GET /collections/:id show
 router.get('/:id', collectionsCtrl.show);
-// delete a specific post - DELTE /collections/:id delete
+// delete a specific post - DELETE /collections/:id delete
 router.delete('/:id', collectionsCtrl.delete);
+router.delete('/:collectionId/items/:itemId', collectionsCtrl.deleteOneItem);
 
 module.exports = router;
