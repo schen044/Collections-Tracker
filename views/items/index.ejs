@@ -3,22 +3,19 @@
 <table>
   <thead>
     <tr>
-      <th>Collection Name</th>
-      <th>Collection Type</th>
+      <th>Item Name</th>
     </tr>
   </thead>
   <tbody>
-    <% collections.forEach(c => { %>
+    <% items.forEach(i => { %>
       <tr>
-        <td><%= c.name %></td>
-        <td><%= c.type %></td>
-        <td><a href="/collections/<%= c._id %>">Details</a></td>
+        <td><%= i.itemName %></td>
+        <td><a href="/items/<%= i._id %>">Details</a></td>
       </tr>
     <% }) %>
   </tbody>
 </table>
 <a href="/collections/new">Add New Collection</a>
 <a href="/items/new">Add Item to Collection</a>
-<a href="/items">All Items</a>
 
 <%- include('../partials/footer') %>

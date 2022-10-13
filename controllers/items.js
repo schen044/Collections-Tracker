@@ -3,7 +3,10 @@ const Collection = require('../models/collection')
 
 module.exports = {
   new: newItem,
-  create
+  create,
+  index,
+  showOne,
+  addToCollection
 };
 
 function newItem(req, res) {
@@ -18,5 +21,30 @@ function create(req, res) {
     }
     console.log(item);
     res.redirect('./collections')
+  })
+}
+
+function index(req, res) {
+  Item.find({}, function(err, items) {
+    res.render('items/index', { title: 'Items', items });
+  });
+}
+
+function showOne(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+    Collection.find({}, function(err, collections) {
+      res.render('items/show', { title: 'Item Detail', item, collections});
+    })
+  });
+}
+
+function addToCollection(req, res) {
+  Item.findById(req.params.id, function(err, item) {
+    Collection.findById(req.body.collectionId, function(err, collections) {
+      collections.itemName.push(item)
+      collections.save(function(err) {
+        res.redirect(`/items/${item._id}`)
+      })
+    })
   })
 }
