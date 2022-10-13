@@ -4,9 +4,15 @@ const Schema = mongoose.Schema;
 
 
 const collectionSchema = new Schema({
-  name: String,
+  name: {
+    type: String,
+    required: true
+  },
   type: String,
-  itemName: [{type: Schema.Types.ObjectId, ref: 'Item'}]
+  item: [{type: Schema.Types.ObjectId, ref: 'Item'}],
+  user: {type: Schema.Types.ObjectId, ref: 'User', required: true },
+  userName: String,
+  userAvatar: String
 }, {
   timestamps: true
 });
