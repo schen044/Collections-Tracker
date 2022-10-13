@@ -5,7 +5,7 @@ module.exports = {
   new: newItem,
   create,
   index,
-  showOne,
+  show,
   addToCollection
 };
 
@@ -30,7 +30,7 @@ function index(req, res) {
   });
 }
 
-function showOne(req, res) {
+function show(req, res) {
   Item.findById(req.params.id, function(err, item) {
     Collection.find({}, function(err, collections) {
       res.render('items/show', { title: 'Item Detail', item, collections});

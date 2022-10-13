@@ -11,7 +11,7 @@ router.post('/', itemsCtrl.create);
 // read all posts - GET /items index
 router.get('/', itemsCtrl.index);
 // read a specific post - GET /items/:id show
-router.get('/:id', itemsCtrl.showOne);
+router.get('/:id', itemsCtrl.show);
 // create a comment for a post - POST /items/:id/collections
 router.post('/:id/collections', itemsCtrl.addToCollection)
 
