@@ -37,8 +37,8 @@ function create(req, res) {
 
 function show(req, res) {
   Collection.findById(req.params.id, function(err, collection) {
-    Item.find({}, function(err, dbitems) {
-      res.render('collections/show', { title: `${collection.name}`, dbitems, collection});
+    Item.find({}, function(err, itemDb) {
+      res.render('collections/show', { title: `${collection.name}`, itemDb, collection});
     })
   });
 }
