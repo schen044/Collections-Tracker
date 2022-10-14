@@ -2,7 +2,9 @@
 
 <section id="show-page">
   <div><h2><%= item.itemName %></h2>
-    <a href="/items/<%= item._id %>/edit"><button>EDIT</button></a>
+    <% if (user) { %>
+      <a href="/items/<%= item._id %>/edit"><button>EDIT</button></a>
+    <% } %>
   </div>
   <br><div>Product ID: </div>
   <div><%= item.productId %></div>
@@ -10,16 +12,22 @@
   <div><%= item.vendor %></div>
   <div>Date Produced: </div>
   <div><%= item.dateProduced %></div>
-  <div>Date Ordered:</div>
-  <div><%= item.dateOrdered %></div>
-  <div>Order Status:</div>
-  <div><%= item.itemStatus %></div>
+  <% collections.forEach(c => { %>
+    <% if (user && user._id.equals(c.user) && c.item.includes(String(item._id))) { %>
+      <div>Date Ordered:</div>
+      <div><%= item.dateOrdered %></div>
+      <div>Order Status:</div>
+      <div><%= item.itemStatus %></div>
+<% }}) %>
 </section>
-<form id="add-item-to-collect" action="/items/<%= item._id %>/collections" method="POST">
+<% if (user) { %>
+  <form id="add-item-to-collect" action="/items/<%= item._id %>/collections" method="POST">
     <select name="collectionId">
         <%- collections.map(c => `<option value="${c._id}">${c.name}</option>`).join('') %>
     </select>
     <button type="submit">Add to Collection</button>
   </form>
+<% } %>
+
 
 <%- include('../partials/footer') %>

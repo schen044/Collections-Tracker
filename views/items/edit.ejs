@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-  <body>
+<% if(user) { %>
     <h2>Edit Item</h2>
     <form id="edit-form" action="/items/<%= item._id %>?_method=PUT" method="POST" autocomplete="off">
         <label>Item Name:</label>
@@ -15,18 +15,22 @@
         <label>Date Produced:
             <input type="datetime-local" name="dateProduced" value="2022-10-11T12:00">
         <br><br>
-        <label>Date Ordered:</label>
-            <input type="datetime-local" name="dateOrdered" value="2022-10-11T12:00">
-        <br><br>
-        <label>Status:</label>
-            <select name="itemStatus">
-                <option value="Wishlisted">Wishlisted</option>
-                <option value="Ordered">Ordered</option>
-                <option value="Shipped">Shipped</option>
-                <option value="Received">Received</option>
-            </select>
+            <% collections.forEach(c => { %>
+                <% if (user._id.equals(c.user) && c.item.includes(String(item._id))) { %>
+                    <label>Date Ordered:</label>
+                        <input type="datetime-local" name="dateOrdered" value="2022-10-11T12:00">
+                    <br><br>
+                    <label>Status:</label>
+                        <select name="itemStatus">
+                            <option value="Wishlisted">Wishlisted</option>
+                            <option value="Ordered">Ordered</option>
+                            <option value="Shipped">Shipped</option>
+                            <option value="Received">Received</option>
+                        </select>
+            <% }}) %>
         <br><br>
         <input type="submit" value="Save Changes">
-      </form>
+    </form>
+<% } %>
 
 <%- include('../partials/footer') %>

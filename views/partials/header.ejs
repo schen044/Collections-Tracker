@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel='stylesheet' href='/stylesheets/style.css' />
-  <title>Collections Tracker</title>
+  <title><%= title %></title>
 </head>
 <body>
   <nav>
-    <img src="/images/camera.svg">
+    <a id="home-icon" href="/"><img src="/images/home.png"></a>
     <a href="/items" <%- title === 'All Items' ? 'class="active"' : '' %>>Browse All Items</a>
     <% if (user) { %>
       <a href="/collections"	<%- title === 'All Collections' ? 'class="active"' : '' %>>
@@ -21,4 +21,3 @@
   </nav>
   
   <main>
-    <h1>Collections Tracker</h1>

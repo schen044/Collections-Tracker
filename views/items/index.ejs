@@ -1,25 +1,22 @@
 <%- include('../partials/header') %>
 
+<a href="/collections/new"><button>Add New Collection</button></a>
+<a href="/items/new"><button>Add Item</button></a>
 <table>
-  <thead>
-    <tr>
-      <th>Item Name</th>
-    </tr>
-  </thead>
   <tbody>
     <% items.forEach(i => { %>
       <tr>
         <td><a href="/items/<%= i._id %>"><%= i.itemName %></a></td>
+        <% if(user && String(user._id) === '6340fe83306908394aac6f3d') { %>
         <td>
             <form action="/items/<%= i._id %>?_method=DELETE" method="POST">
                 <button type="submit">DELETE</button>
             </form>
         </td>
+        <% } %>
       </tr>
     <% }) %>
   </tbody>
 </table>
-<a href="/collections/new">Add New Collection</a>
-<a href="/items/new">Add Item to Collection</a>
 
 <%- include('../partials/footer') %>

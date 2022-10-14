@@ -1,29 +1,26 @@
 <%- include('../partials/header') %>
 
-
-<table>
-  <thead>
-    <tr>
-      <th>Item Name</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% collection.item.forEach(i => { %>
-      <tr>
-        <% itemDb.forEach(d => { %>
-        <% if(String(i._id) === String(d._id)) { %>
-          <td>
-            <a href="/items/<%= i._id %>"><%= d.itemName %></a>
-          </td>
-        <% }}) %>
-        <td>
-          <form action="/collections/<%= collection._id %>/items/<%= i._id %>?_method=DELETE" method="POST">
-            <button type="submit">DELETE</button>
-          </form>
-        </td>
-      </tr>
-    <% }) %>
-  </tbody>
-</table>
+<% if (user && user._id.equals(collection.user)) { %>
+  <table>
+    <tbody>
+      <% collection.item.forEach(i => { %>
+        <tr>
+          <% itemDb.forEach(d => { %>
+            <% if(String(i._id) === String(d._id)) { %>
+              <td>
+                <a href="/items/<%= i._id %>"><%= d.itemName %></a>
+              </td>
+          <% }}) %>
+            <td>
+              <form action="/collections/<%= collection._id %>/items/<%= i._id %>?_method=DELETE" method="POST">
+                <button type="submit">DELETE</button>
+              </form>
+            </td>
+        </tr>
+      </tbody>
+  </table>
+<% })} else { %>
+  <h2>Access Denied</h2>
+<% } %>
 
 <%- include('../partials/footer') %>

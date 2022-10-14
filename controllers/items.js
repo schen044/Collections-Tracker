@@ -29,14 +29,14 @@ function create(req, res) {
 
 function index(req, res) {
   Item.find({}, function(err, items) {
-    res.render('items/index', { title: 'Items', items });
+    res.render('items/index', { title: 'All Items', items });
   });
 }
 
 function show(req, res) {
   Item.findById(req.params.id, function(err, item) {
     Collection.find({}, function(err, collections) {
-      res.render('items/show', { title: 'Item Detail', item, collections});
+      res.render('items/show', { title: `${item.itemName} Details`, item, collections});
     })
   });
 }
@@ -63,7 +63,9 @@ function deleteItem(req, res) {
 
 function edit(req, res) {
   Item.findById(req.params.id, function(err, item) {
-      res.render('items/edit', { title: 'Edit Item', item});
+    Collection.find({}, function(err, collections) {
+      res.render('items/edit', { title: `Edit ${item.itemName} Info`, item, collections })
+    })
   });
 }
 

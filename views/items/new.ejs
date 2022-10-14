@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-  <body>
+<% if(user) { %>
     <h2>Add Item</h2>
     <form id="new-form" action="/items" method="POST">
         <label>Item Name:</label>
@@ -25,5 +25,5 @@
         <br><br>
         <input type="submit" value="Add Item">
       </form>
-
+<% } %>
 <%- include('../partials/footer') %>

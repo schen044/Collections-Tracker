@@ -1,11 +1,11 @@
 <%- include('./partials/header') %>
 
-  <body>
-    <% if(!user) { %>
-      <p>Please log in to begin curating your collections.</p>
-    <% } %>
-    <% if(user) { %>
-      <a href="/collections">Enter Site</a>
-    <% } %>
+<h1>Collections Tracker</h1>
+<% if(!user) { %>
+  <p>Please log in to begin curating your collections.</p>
+<% } %>
+<% if(user) { %>
+  <a href="/collections">Enter Site</a>
+<% } %>
 
 <%- include('./partials/footer') %>

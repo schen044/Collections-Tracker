@@ -1,28 +1,38 @@
 <%- include('../partials/header') %>
 
-<a href="/collections/new"><button>Add New Collection</button></a>
-<a href="/items/new"><button>Add Item to Collection</button></a>
-<table>
-  <thead>
-    <tr>
-      <th>Collection Name</th>
-      <th>Collection Type</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% collections.forEach(c => { %>
+<% if (user) { %>
+  <a href="/collections/new"><button>Add New Collection</button></a>
+  <a href="/items/new"><button>Add Item</button></a>
+  <table>
+    <thead>
       <tr>
-        <td><%= c.name %></td>
-        <td><%= c.type %></td>
-        <td><a href="/collections/<%= c._id %>">Details</a></td>
-        <td>
-          <form action="/collections/<%= c._id %>?_method=DELETE" method="POST">
-            <button type="submit">DELETE</button>
-          </form>
-        </td>
+        <th>Collection Name</th>
+        <th>Collection Type</th>
       </tr>
-    <% }) %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% let displayOnce = 0 %>
+      <% collections.forEach(c => { %>
+        <% if (user._id.equals(c.user)) { %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.type %></td>
+          <td><a href="/collections/<%= c._id %>">Details</a></td>
+          <td>
+            <form action="/collections/<%= c._id %>?_method=DELETE" method="POST">
+              <button type="submit">DELETE</button>
+            </form>
+          </td>
+        </tr>
+      <% } else { %>
+        <% if(displayOnce < 1) { %>
+          <h2>No collections found</h2>
+          <% displayOnce++ %>
+        <% } else { %>
+          <% return %>
+      <% }}})%>
+    </tbody>
+  </table>
+<% } %>
 
 <%- include('../partials/footer') %>
