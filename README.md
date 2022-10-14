@@ -1,6 +1,6 @@
 <!-- Your app's title: A description of your game. Background info of the app is a nice touch -->
  # Collections Tracker
-Collections Tracker is my take on the figurine tracking website [My Figure Collection](https://myfigurecollection.net/) in case the site goes down or the owner returns from being MIA and shuts down the site. The main use is to be able to check what items have been ordered without having to scrub through various websites and emails.
+Collections Tracker is my take on the figurine tracking website [My Figure Collection](https://myfigurecollection.net/) in case the site goes down or the owner returns from being MIA. The main use is to be able to check what items have been ordered without having to scrub through various websites and emails.
 
 <!-- Screenshot(s): Images of your actual app -->
 ## Screenshots
@@ -23,6 +23,7 @@ Item Details:
 [Click here](https://collection-tracker.onrender.com/) to access Collections Tracker.
 
 <!-- Next Steps: Planned future enhancements (icebox items) -->
+## Next Steps
 - [ ] Update CSS to make the page look less plain
 - [ ] Add item searching functionality
 - [ ] Add ability to add notes
