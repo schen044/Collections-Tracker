@@ -1,36 +1,34 @@
 <%- include('../partials/header') %>
 
-<section id="show-page">
+<section id="show-item-page">
   <div>
     <img id="item-image" alt="item image" src="<%= item.itemImage %>">
   </div>
-  <div><h2><%= item.itemName %></h2>
+  <div class="item-info">
+    <div id="item-name">
+    <h2><%= item.itemName %></h2>
     <% if (user) { %>
       <a href="/items/<%= item._id %>/edit"><button>EDIT</button></a>
     <% } %>
+    </div>
+    <div>Product ID: <%= item.productId %></div>
+    <div>Vendor: <%= item.vendor %></div>
+    <div>Date Produced: <%= item.dateProduced %></div>
+    <% collections.forEach(c => { %>
+      <% if (user && user._id.equals(c.user) && c.item.includes(String(item._id))) { %>
+        <div>Date Ordered: <%= item.dateOrdered %></div>
+        <div>Order Status: <%= item.itemStatus %></div>
+    <% }}) %>
+    <% if (user) { %>
+      <form id="add-item-to-collect" action="/items/<%= item._id %>/collections" method="POST">
+        <select name="collectionId">
+            <%- collections.map(c => `<option value="${c._id}">${c.name}</option>`).join('') %>
+        </select>
+        <button type="submit">Add to Collection</button>
+      </form>
+    <% } %>
   </div>
-  <br><div>Product ID: </div>
-  <div><%= item.productId %></div>
-  <div>Vendor: </div>
-  <div><%= item.vendor %></div>
-  <div>Date Produced: </div>
-  <div><%= item.dateProduced %></div>
-  <% collections.forEach(c => { %>
-    <% if (user && user._id.equals(c.user) && c.item.includes(String(item._id))) { %>
-      <div>Date Ordered:</div>
-      <div><%= item.dateOrdered %></div>
-      <div>Order Status:</div>
-      <div><%= item.itemStatus %></div>
-<% }}) %>
 </section>
-<% if (user) { %>
-  <form id="add-item-to-collect" action="/items/<%= item._id %>/collections" method="POST">
-    <select name="collectionId">
-        <%- collections.map(c => `<option value="${c._id}">${c.name}</option>`).join('') %>
-    </select>
-    <button type="submit">Add to Collection</button>
-  </form>
-<% } %>
 
 
 <%- include('../partials/footer') %>
