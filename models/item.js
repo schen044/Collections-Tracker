@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
   itemName: String,
+  itemImage: String,
   productId: String,
   vendor: String,
   dateProduced: Date,

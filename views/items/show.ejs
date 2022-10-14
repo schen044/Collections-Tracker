@@ -1,6 +1,9 @@
 <%- include('../partials/header') %>
 
 <section id="show-page">
+  <div>
+    <img id="item-image" alt="item image" src="<%= item.itemImage %>">
+  </div>
   <div><h2><%= item.itemName %></h2>
     <% if (user) { %>
       <a href="/items/<%= item._id %>/edit"><button>EDIT</button></a>

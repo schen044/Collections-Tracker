@@ -6,7 +6,7 @@
   <tbody>
     <% items.forEach(i => { %>
       <tr>
-        <td><a href="/items/<%= i._id %>"><%= i.itemName %></a></td>
+        <td><a href="/items/<%= i._id %>"><img id="item-thumbnail" src="<%= i.itemImage %>"><%= i.itemName %></a></td>
         <% if(user && String(user._id) === '6340fe83306908394aac6f3d') { %>
         <td>
             <form action="/items/<%= i._id %>?_method=DELETE" method="POST">
