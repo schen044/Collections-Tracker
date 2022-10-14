@@ -1,16 +1,22 @@
 <%- include('../partials/header') %>
 
-<a href="/collections/new"><button>Add New Collection</button></a>
-<a href="/items/new"><button>Add Item</button></a>
+<h1>All Items</h1>
+<div class="add-buttons">
+  <a href="/collections/new"><button>Add New Collection</button></a>
+  <a href="/items/new"><button>Add Item</button></a>
+</div>
 <table>
   <tbody>
     <% items.forEach(i => { %>
       <tr>
-        <td><a href="/items/<%= i._id %>"><img id="item-thumbnail" src="<%= i.itemImage %>"><%= i.itemName %></a></td>
+        <td><a href="/items/<%= i._id %>"><img id="item-thumbnail" src="<%= i.itemImage %>">
+          <br>
+          <%= i.itemName %></a>
+        </td>
         <% if(user && String(user._id) === '6340fe83306908394aac6f3d') { %>
         <td>
             <form action="/items/<%= i._id %>?_method=DELETE" method="POST">
-                <button type="submit">DELETE</button>
+                <button class="delete-button" type="submit">DELETE</button>
             </form>
         </td>
         <% } %>
