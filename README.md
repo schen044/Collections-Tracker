@@ -16,7 +16,7 @@ Item Details:
 * CSS to display each page
 * HTML to deliver the page content and to generate info
 * EJS to help generate page content
-* Mongoose to handle server functions
+* Mongoose, Express, Node to handle server functions
 
 <!-- Getting Started: In this section include the link to your deployed game and any instructions you deem important -->
 ## Getting Started
