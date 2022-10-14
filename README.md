@@ -20,7 +20,7 @@ Item Details:
 
 <!-- Getting Started: In this section include the link to your deployed game and any instructions you deem important -->
 ## Getting Started
-[Click here](https://collection-tracker.onrender.com/) to access Collections Tracker.
+[Click here](https://collection-tracker.onrender.com/) to access Collections Tracker.\
 [Click here](https://trello.com/b/MxuP1xKM/collections-tracker-project-2) to access the Trello board for this project.
 
 <!-- Next Steps: Planned future enhancements (icebox items) -->
